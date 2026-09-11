@@ -1,4 +1,4 @@
-import { RemovalPolicy, Stack, StackProps, Tags } from 'aws-cdk-lib';
+import { Aspects, RemovalPolicy, Stack, StackProps, Tags } from 'aws-cdk-lib';
 import { DomainName, HttpMethod } from 'aws-cdk-lib/aws-apigatewayv2';
 import { HttpLambdaIntegration } from 'aws-cdk-lib/aws-apigatewayv2-integrations';
 import { AttributeType, BillingMode, Table } from 'aws-cdk-lib/aws-dynamodb';
@@ -8,6 +8,7 @@ import { Api } from './app/Api';
 import { applyPageLambdaDefaults, createLambdaLogGroup } from './app/PageLambda';
 import { StatusFunction } from './app/status/status-function';
 import { Statics } from './Statics';
+import { PermissionsBoundaryAspect } from '@gemeentenijmegen/aws-constructs';
 
 export interface AppStackProps extends StackProps {
   apiDomainName: DomainName;
@@ -18,6 +19,7 @@ export class AppStack extends Stack {
   constructor(scope: Construct, id: string, props: AppStackProps) {
     super(scope, id, props);
     Tags.of(this).add('Project', Statics.projectName);
+    Aspects.of(this).add(new PermissionsBoundaryAspect());
 
     this.sessionsTable();
 

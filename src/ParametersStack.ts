@@ -1,8 +1,9 @@
-import { SecretValue, Stack, StackProps, Tags } from 'aws-cdk-lib';
+import { Aspects, SecretValue, Stack, StackProps, Tags } from 'aws-cdk-lib';
 import { ISecret, Secret } from 'aws-cdk-lib/aws-secretsmanager';
 import { StringParameter } from 'aws-cdk-lib/aws-ssm';
 import { Construct } from 'constructs';
 import { Statics } from './Statics';
+import { PermissionsBoundaryAspect } from '@gemeentenijmegen/aws-constructs';
 
 export class ParametersStack extends Stack {
 
@@ -10,6 +11,7 @@ export class ParametersStack extends Stack {
 
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
+    Aspects.of(this).add(new PermissionsBoundaryAspect());
     Tags.of(this).add('Project', Statics.projectName);
 
     this.applicationSecrets = new Secret(this, 'bewindvoerder-application-secrets', {
