@@ -1,16 +1,16 @@
 {
   "dependencies": [
     {
-      "name": "@gemeentenijmegen/projen-project-type",
-      "type": "build"
-    },
-    {
       "name": "@stylistic/eslint-plugin",
       "version": "^2",
       "type": "build"
     },
     {
-      "name": "@types/jest",
+      "name": "@types/aws-lambda",
+      "type": "build"
+    },
+    {
+      "name": "@types/mustache",
       "type": "build"
     },
     {
@@ -33,11 +33,6 @@
       "type": "build"
     },
     {
-      "name": "commit-and-tag-version",
-      "version": "^12",
-      "type": "build"
-    },
-    {
       "name": "esbuild",
       "type": "build"
     },
@@ -55,20 +50,7 @@
       "type": "build"
     },
     {
-      "name": "jest",
-      "type": "build"
-    },
-    {
-      "name": "jest-junit",
-      "version": "^17",
-      "type": "build"
-    },
-    {
       "name": "projen",
-      "type": "build"
-    },
-    {
-      "name": "ts-jest",
       "type": "build"
     },
     {
@@ -80,7 +62,31 @@
       "type": "build"
     },
     {
+      "name": "@aws-lambda-powertools/logger",
+      "type": "runtime"
+    },
+    {
+      "name": "@aws-sdk/client-dynamodb",
+      "type": "runtime"
+    },
+    {
+      "name": "@gemeentenijmegen/apigateway-http",
+      "type": "runtime"
+    },
+    {
       "name": "@gemeentenijmegen/aws-constructs",
+      "type": "runtime"
+    },
+    {
+      "name": "@gemeentenijmegen/session",
+      "type": "runtime"
+    },
+    {
+      "name": "@gemeentenijmegen/utils",
+      "type": "runtime"
+    },
+    {
+      "name": "@ver-id/node-client",
       "type": "runtime"
     },
     {
@@ -91,6 +97,18 @@
     {
       "name": "constructs",
       "version": "^10.5.1",
+      "type": "runtime"
+    },
+    {
+      "name": "mustache",
+      "type": "runtime"
+    },
+    {
+      "name": "openid-client",
+      "type": "runtime"
+    },
+    {
+      "name": "zod",
       "type": "runtime"
     }
   ],

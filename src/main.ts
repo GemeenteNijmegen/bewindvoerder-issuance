@@ -1,23 +1,23 @@
-import { App, Stack, StackProps } from 'aws-cdk-lib';
-import { Construct } from 'constructs';
-
-export class MyStack extends Stack {
-  constructor(scope: Construct, id: string, props: StackProps = {}) {
-    super(scope, id, props);
-
-    // define resources here...
-  }
-}
-
-// for development, use account/region from cdk cli
-const devEnv = {
-  account: process.env.CDK_DEFAULT_ACCOUNT,
-  region: process.env.CDK_DEFAULT_REGION,
-};
+import { App } from 'aws-cdk-lib';
+import { AppStack } from './AppStack';
+import { configuration } from './Configuration';
+import { DomainStack } from './DomainStack';
+import { ParametersStack } from './ParametersStack';
 
 const app = new App();
 
-new MyStack(app, 'bewindvoerder-issuance-dev', { env: devEnv });
-// new MyStack(app, 'bewindvoerder-issuance-prod', { env: prodEnv });
+new ParametersStack(app, 'bewindvoerder-issuance-parameters', {
+  env: configuration.env,
+});
+
+const domainStack = new DomainStack(app, 'bewindvoerder-issuance-domain', {
+  env: configuration.env,
+  configuration,
+});
+
+new AppStack(app, 'bewindvoerder-issuance-app', {
+  env: configuration.env,
+  apiDomainName: domainStack.apiDomainName,
+});
 
 app.synth();

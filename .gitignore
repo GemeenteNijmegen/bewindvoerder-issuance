@@ -30,6 +30,7 @@ jspm_packages/
 *.tgz
 .yarn-integrity
 .cache
+workdocs/
 test-reports/junit.xml
 test/__snapshots__/*
 .env
@@ -37,14 +38,7 @@ test/__snapshots__/*
 .DS_Store
 test/playwright/report
 test/playwright/screenshots
-/test-reports/
-junit.xml
-/coverage/
 !/.github/workflows/build.yml
-/dist/changelog.md
-/dist/version.txt
-!/.github/workflows/release.yml
-!/.github/workflows/upgrade-acceptance.yml
 !/.github/pull_request_template.md
 !/test/
 !/tsconfig.json
@@ -59,7 +53,6 @@ junit.xml
 /cdk.out/
 .cdk.staging/
 .parcel-cache/
-!/.github/workflows/emergency.yml
-!/.github/workflows/auto-merge.yml
+!/src/app/status/status-function.ts
 !/.nvmrc
 !/.projenrc.ts
