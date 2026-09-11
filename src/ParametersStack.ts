@@ -1,9 +1,9 @@
+import { PermissionsBoundaryAspect } from '@gemeentenijmegen/aws-constructs';
 import { Aspects, SecretValue, Stack, StackProps, Tags } from 'aws-cdk-lib';
 import { ISecret, Secret } from 'aws-cdk-lib/aws-secretsmanager';
 import { StringParameter } from 'aws-cdk-lib/aws-ssm';
 import { Construct } from 'constructs';
 import { Statics } from './Statics';
-import { PermissionsBoundaryAspect } from '@gemeentenijmegen/aws-constructs';
 
 export class ParametersStack extends Stack {
 

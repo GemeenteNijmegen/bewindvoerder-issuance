@@ -1,3 +1,4 @@
+import { PermissionsBoundaryAspect } from '@gemeentenijmegen/aws-constructs';
 import { Aspects, RemovalPolicy, Stack, StackProps, Tags } from 'aws-cdk-lib';
 import { DomainName, HttpMethod } from 'aws-cdk-lib/aws-apigatewayv2';
 import { HttpLambdaIntegration } from 'aws-cdk-lib/aws-apigatewayv2-integrations';
@@ -8,7 +9,6 @@ import { Api } from './app/Api';
 import { applyPageLambdaDefaults, createLambdaLogGroup } from './app/PageLambda';
 import { StatusFunction } from './app/status/status-function';
 import { Statics } from './Statics';
-import { PermissionsBoundaryAspect } from '@gemeentenijmegen/aws-constructs';
 
 export interface AppStackProps extends StackProps {
   apiDomainName: DomainName;
