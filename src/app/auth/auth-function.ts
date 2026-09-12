@@ -4,22 +4,22 @@ import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
 
 /**
- * Props for StatusFunction
+ * Props for AuthFunction
  */
-export interface StatusFunctionProps extends lambda.FunctionOptions {
+export interface AuthFunctionProps extends lambda.FunctionOptions {
 }
 
 /**
- * An AWS Lambda function which executes src/app/status/status.
+ * An AWS Lambda function which executes src/app/auth/auth.
  */
-export class StatusFunction extends lambda.Function {
-  constructor(scope: Construct, id: string, props?: StatusFunctionProps) {
+export class AuthFunction extends lambda.Function {
+  constructor(scope: Construct, id: string, props?: AuthFunctionProps) {
     super(scope, id, {
-      description: 'src/app/status/status.lambda.ts',
+      description: 'src/app/auth/auth.lambda.ts',
       ...props,
       runtime: new lambda.Runtime('nodejs24.x', lambda.RuntimeFamily.NODEJS),
       handler: 'index.handler',
-      code: lambda.Code.fromAsset(path.join(__dirname, '../../../assets/app/status/status.lambda')),
+      code: lambda.Code.fromAsset(path.join(__dirname, '../../../assets/app/auth/auth.lambda')),
     });
     this.addEnvironment('AWS_NODEJS_CONNECTION_REUSE_ENABLED', '1', { removeInEdge: true });
   }

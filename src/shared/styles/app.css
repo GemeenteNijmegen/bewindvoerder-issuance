@@ -1,0 +1,126 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  width: 100%;
+}
+
+.page {
+  flex: 1 0 auto;
+  width: 100%;
+  max-width: 40rem;
+  margin-inline: auto;
+  padding: 1.5rem 1rem;
+  box-sizing: border-box;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+  padding: 0.5rem 1rem;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+.app-header {
+  border-bottom: 1px solid #ddd;
+  padding: 0.75rem 1rem;
+}
+
+.app-header__inner {
+  max-width: 40rem;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.app-header__logo {
+  width: 24px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.app-header__title {
+  font-weight: 600;
+}
+
+.app-footer {
+  flex-shrink: 0;
+  border-top: 1px solid #ddd;
+  padding: 1rem;
+  text-align: center;
+}
+
+.app-footer .utrecht-paragraph {
+  margin: 0;
+  color: #555;
+}
+
+.login-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.login-button__logo {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+}
+
+.login-hint {
+  margin-block-start: 1rem;
+}
+
+.test-kvk-numbers {
+  margin-block-start: 2rem;
+  font-size: 0.875rem;
+  color: #555;
+}
+
+.organisation-card {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-block: 1rem 1.5rem;
+}
+
+.organisation-card dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 1rem;
+}
+
+.organisation-card dt {
+  font-weight: 600;
+}
+
+.organisation-card dd {
+  margin: 0;
+}
+
+.client {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-block-end: 1rem;
+}

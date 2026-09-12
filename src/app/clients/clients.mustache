@@ -1,0 +1,40 @@
+{{>header}}
+<main id="main" class="page">
+  <h1 class="utrecht-heading-1">Machtigingen</h1>
+
+  {{#alert}}
+  <div class="utrecht-alert utrecht-alert--{{type}}" role="{{role}}">
+    <div class="utrecht-alert__content">
+      <p class="utrecht-alert__message">{{message}}</p>
+    </div>
+  </div>
+  {{/alert}}
+
+  <section class="organisation-card">
+    <dl>
+      <dt>Organisatie</dt>
+      <dd>{{organisationName}}</dd>
+      <dt>KVK-nummer</dt>
+      <dd>{{kvkNumber}}</dd>
+    </dl>
+  </section>
+
+  <h2 class="utrecht-heading-2">Cliënten</h2>
+
+  {{#clients}}
+  <article class="client">
+    <h3 class="utrecht-heading-3">{{displayName}}</h3>
+    <p class="utrecht-paragraph">{{typeLabel}}</p>
+    <form method="post" action="/clients/{{id}}/issue">
+      <button class="utrecht-button utrecht-button--primary-action" type="submit">
+        Machtiging ophalen
+      </button>
+    </form>
+  </article>
+  {{/clients}}
+
+  {{^clients}}
+  <p class="utrecht-paragraph">Voor deze demo-organisatie staan geen machtigingen klaar.</p>
+  {{/clients}}
+</main>
+{{>footer}}

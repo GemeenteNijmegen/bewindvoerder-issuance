@@ -158,7 +158,10 @@
         "devDependencies": [
           "**/test/**",
           "**/build-tools/**",
-          "src/app/status/status.lambda.ts",
+          "src/app/auth/auth.lambda.ts",
+          "src/app/clients/clients.lambda.ts",
+          "src/app/issue/issue-callback.lambda.ts",
+          "src/app/issue/issue-start.lambda.ts",
           ".projenrc.ts",
           "projenrc/**/*.ts"
         ],

@@ -6,7 +6,7 @@ import { ParametersStack } from './ParametersStack';
 
 const app = new App();
 
-new ParametersStack(app, 'bewindvoerder-issuance-parameters', {
+const parametersStack = new ParametersStack(app, 'bewindvoerder-issuance-parameters', {
   env: configuration.env,
 });
 
@@ -18,6 +18,8 @@ const domainStack = new DomainStack(app, 'bewindvoerder-issuance-domain', {
 new AppStack(app, 'bewindvoerder-issuance-app', {
   env: configuration.env,
   apiDomainName: domainStack.apiDomainName,
+  hostname: domainStack.hostname,
+  applicationSecrets: parametersStack.applicationSecrets,
 });
 
 app.synth();

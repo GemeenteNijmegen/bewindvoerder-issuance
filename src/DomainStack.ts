@@ -1,7 +1,7 @@
 import { Stack, StackProps, Tags } from 'aws-cdk-lib';
 import { DomainName } from 'aws-cdk-lib/aws-apigatewayv2';
 import { Certificate, CertificateValidation } from 'aws-cdk-lib/aws-certificatemanager';
-import { ARecord, HostedZone, IHostedZone, RecordTarget } from 'aws-cdk-lib/aws-route53';
+import { ARecord, TxtRecord, HostedZone, IHostedZone, RecordTarget } from 'aws-cdk-lib/aws-route53';
 import { ApiGatewayv2DomainProperties } from 'aws-cdk-lib/aws-route53-targets';
 import { StringParameter } from 'aws-cdk-lib/aws-ssm';
 import { Construct } from 'constructs';
@@ -39,6 +39,13 @@ export class DomainStack extends Stack {
         this.apiDomainName.regionalDomainName,
         this.apiDomainName.regionalHostedZoneId,
       )),
+    });
+    new TxtRecord(this, 'verid-domain-validation', {
+      zone,
+      recordName: `_verid-challenge.${props.configuration.subdomain}`,
+      values: [
+        '8443deb1d02f3c2e2a1cefef59a89a1e91d1d042df6b00ca4a34527b50ed300c',
+      ],
     });
   }
 

@@ -14,7 +14,10 @@
     "cdk.json",
     "LICENSE",
     "projenrc/tsconfig.json",
-    "src/app/status/status-function.ts",
+    "src/app/auth/auth-function.ts",
+    "src/app/clients/clients-function.ts",
+    "src/app/issue/issue-callback-function.ts",
+    "src/app/issue/issue-start-function.ts",
     "test/tsconfig.json",
     "tsconfig.json"
   ],

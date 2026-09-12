@@ -53,6 +53,9 @@ test/playwright/screenshots
 /cdk.out/
 .cdk.staging/
 .parcel-cache/
-!/src/app/status/status-function.ts
+!/src/app/auth/auth-function.ts
+!/src/app/clients/clients-function.ts
+!/src/app/issue/issue-callback-function.ts
+!/src/app/issue/issue-start-function.ts
 !/.nvmrc
 !/.projenrc.ts

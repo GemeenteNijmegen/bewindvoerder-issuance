@@ -70,6 +70,10 @@
       "type": "runtime"
     },
     {
+      "name": "@aws-sdk/lib-dynamodb",
+      "type": "runtime"
+    },
+    {
       "name": "@gemeentenijmegen/apigateway-http",
       "type": "runtime"
     },
@@ -78,11 +82,55 @@
       "type": "runtime"
     },
     {
+      "name": "@gemeentenijmegen/design-tokens",
+      "type": "runtime"
+    },
+    {
+      "name": "@gemeentenijmegen/semantic-html",
+      "type": "runtime"
+    },
+    {
       "name": "@gemeentenijmegen/session",
       "type": "runtime"
     },
     {
       "name": "@gemeentenijmegen/utils",
+      "type": "runtime"
+    },
+    {
+      "name": "@utrecht/alert-css",
+      "type": "runtime"
+    },
+    {
+      "name": "@utrecht/button-css",
+      "type": "runtime"
+    },
+    {
+      "name": "@utrecht/document-css",
+      "type": "runtime"
+    },
+    {
+      "name": "@utrecht/heading-1-css",
+      "type": "runtime"
+    },
+    {
+      "name": "@utrecht/heading-2-css",
+      "type": "runtime"
+    },
+    {
+      "name": "@utrecht/heading-3-css",
+      "type": "runtime"
+    },
+    {
+      "name": "@utrecht/link-css",
+      "type": "runtime"
+    },
+    {
+      "name": "@utrecht/page-body-css",
+      "type": "runtime"
+    },
+    {
+      "name": "@utrecht/paragraph-css",
       "type": "runtime"
     },
     {

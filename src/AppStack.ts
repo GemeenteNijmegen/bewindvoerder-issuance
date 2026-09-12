@@ -1,17 +1,19 @@
 import { PermissionsBoundaryAspect } from '@gemeentenijmegen/aws-constructs';
 import { Aspects, RemovalPolicy, Stack, StackProps, Tags } from 'aws-cdk-lib';
-import { DomainName, HttpMethod } from 'aws-cdk-lib/aws-apigatewayv2';
-import { HttpLambdaIntegration } from 'aws-cdk-lib/aws-apigatewayv2-integrations';
+import { DomainName } from 'aws-cdk-lib/aws-apigatewayv2';
 import { AttributeType, BillingMode, Table } from 'aws-cdk-lib/aws-dynamodb';
-import { Tracing } from 'aws-cdk-lib/aws-lambda';
+import { ISecret } from 'aws-cdk-lib/aws-secretsmanager';
 import { Construct } from 'constructs';
 import { Api } from './app/Api';
-import { applyPageLambdaDefaults, createLambdaLogGroup } from './app/PageLambda';
-import { StatusFunction } from './app/status/status-function';
+import { Auth } from './app/auth/Auth';
+import { Clients } from './app/clients/Clients';
+import { Issue } from './app/issue/Issue';
 import { Statics } from './Statics';
 
 export interface AppStackProps extends StackProps {
   apiDomainName: DomainName;
+  hostname: string;
+  applicationSecrets: ISecret;
 }
 
 export class AppStack extends Stack {
@@ -21,23 +23,28 @@ export class AppStack extends Stack {
     Tags.of(this).add('Project', Statics.projectName);
     Aspects.of(this).add(new PermissionsBoundaryAspect());
 
-    this.sessionsTable();
+    const sessionsTable = this.sessionsTable();
 
     const api = new Api(this, 'api', {
       apiDomainName: props.apiDomainName,
     });
 
-    const statusFunction = new StatusFunction(this, 'status-function', {
-      description: 'Status endpoint voor bewindvoerder-issuance',
-      tracing: Tracing.ACTIVE,
-      logGroup: createLambdaLogGroup(this, 'status-function'),
+    new Clients(this, 'clients', {
+      httpApi: api.httpApi,
+      sessionsTable,
     });
-    applyPageLambdaDefaults(statusFunction);
 
-    api.httpApi.addRoutes({
-      path: '/',
-      methods: [HttpMethod.GET],
-      integration: new HttpLambdaIntegration('status-integration', statusFunction),
+    new Auth(this, 'auth', {
+      httpApi: api.httpApi,
+      hostname: props.hostname,
+      applicationSecrets: props.applicationSecrets,
+      sessionsTable,
+    });
+
+    new Issue(this, 'issue', {
+      httpApi: api.httpApi,
+      applicationSecrets: props.applicationSecrets,
+      sessionsTable,
     });
   }
 

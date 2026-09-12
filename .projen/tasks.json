@@ -46,43 +46,177 @@
       "description": "Prepare assets",
       "steps": [
         {
-          "spawn": "bundle:app/status/status.lambda"
+          "spawn": "bundle:app/auth/auth.lambda"
+        },
+        {
+          "spawn": "bundle:app/clients/clients.lambda"
+        },
+        {
+          "spawn": "bundle:app/issue/issue-callback.lambda"
+        },
+        {
+          "spawn": "bundle:app/issue/issue-start.lambda"
         }
       ]
     },
-    "bundle:app/status/status.lambda": {
-      "name": "bundle:app/status/status.lambda",
-      "description": "Create a JavaScript bundle from src/app/status/status.lambda.ts",
+    "bundle:app/auth/auth.lambda": {
+      "name": "bundle:app/auth/auth.lambda",
+      "description": "Create a JavaScript bundle from src/app/auth/auth.lambda.ts",
       "steps": [
         {
           "execArgs": [
             "esbuild",
             "--bundle",
-            "src/app/status/status.lambda.ts",
+            "src/app/auth/auth.lambda.ts",
             "--target=node24",
             "--platform=node",
-            "--outfile=assets/app/status/status.lambda/index.js",
+            "--outfile=assets/app/auth/auth.lambda/index.js",
             "--tsconfig=test/tsconfig.json",
             "--external:@aws-sdk/*",
+            "--loader:.css=text",
             "--loader:.mustache=text"
           ]
         }
       ]
     },
-    "bundle:app/status/status.lambda:watch": {
-      "name": "bundle:app/status/status.lambda:watch",
-      "description": "Continuously update the JavaScript bundle from src/app/status/status.lambda.ts",
+    "bundle:app/auth/auth.lambda:watch": {
+      "name": "bundle:app/auth/auth.lambda:watch",
+      "description": "Continuously update the JavaScript bundle from src/app/auth/auth.lambda.ts",
       "steps": [
         {
           "execArgs": [
             "esbuild",
             "--bundle",
-            "src/app/status/status.lambda.ts",
+            "src/app/auth/auth.lambda.ts",
             "--target=node24",
             "--platform=node",
-            "--outfile=assets/app/status/status.lambda/index.js",
+            "--outfile=assets/app/auth/auth.lambda/index.js",
             "--tsconfig=test/tsconfig.json",
             "--external:@aws-sdk/*",
+            "--loader:.css=text",
+            "--loader:.mustache=text",
+            "--watch"
+          ]
+        }
+      ]
+    },
+    "bundle:app/clients/clients.lambda": {
+      "name": "bundle:app/clients/clients.lambda",
+      "description": "Create a JavaScript bundle from src/app/clients/clients.lambda.ts",
+      "steps": [
+        {
+          "execArgs": [
+            "esbuild",
+            "--bundle",
+            "src/app/clients/clients.lambda.ts",
+            "--target=node24",
+            "--platform=node",
+            "--outfile=assets/app/clients/clients.lambda/index.js",
+            "--tsconfig=test/tsconfig.json",
+            "--external:@aws-sdk/*",
+            "--loader:.css=text",
+            "--loader:.mustache=text"
+          ]
+        }
+      ]
+    },
+    "bundle:app/clients/clients.lambda:watch": {
+      "name": "bundle:app/clients/clients.lambda:watch",
+      "description": "Continuously update the JavaScript bundle from src/app/clients/clients.lambda.ts",
+      "steps": [
+        {
+          "execArgs": [
+            "esbuild",
+            "--bundle",
+            "src/app/clients/clients.lambda.ts",
+            "--target=node24",
+            "--platform=node",
+            "--outfile=assets/app/clients/clients.lambda/index.js",
+            "--tsconfig=test/tsconfig.json",
+            "--external:@aws-sdk/*",
+            "--loader:.css=text",
+            "--loader:.mustache=text",
+            "--watch"
+          ]
+        }
+      ]
+    },
+    "bundle:app/issue/issue-callback.lambda": {
+      "name": "bundle:app/issue/issue-callback.lambda",
+      "description": "Create a JavaScript bundle from src/app/issue/issue-callback.lambda.ts",
+      "steps": [
+        {
+          "execArgs": [
+            "esbuild",
+            "--bundle",
+            "src/app/issue/issue-callback.lambda.ts",
+            "--target=node24",
+            "--platform=node",
+            "--outfile=assets/app/issue/issue-callback.lambda/index.js",
+            "--tsconfig=test/tsconfig.json",
+            "--external:@aws-sdk/*",
+            "--loader:.css=text",
+            "--loader:.mustache=text"
+          ]
+        }
+      ]
+    },
+    "bundle:app/issue/issue-callback.lambda:watch": {
+      "name": "bundle:app/issue/issue-callback.lambda:watch",
+      "description": "Continuously update the JavaScript bundle from src/app/issue/issue-callback.lambda.ts",
+      "steps": [
+        {
+          "execArgs": [
+            "esbuild",
+            "--bundle",
+            "src/app/issue/issue-callback.lambda.ts",
+            "--target=node24",
+            "--platform=node",
+            "--outfile=assets/app/issue/issue-callback.lambda/index.js",
+            "--tsconfig=test/tsconfig.json",
+            "--external:@aws-sdk/*",
+            "--loader:.css=text",
+            "--loader:.mustache=text",
+            "--watch"
+          ]
+        }
+      ]
+    },
+    "bundle:app/issue/issue-start.lambda": {
+      "name": "bundle:app/issue/issue-start.lambda",
+      "description": "Create a JavaScript bundle from src/app/issue/issue-start.lambda.ts",
+      "steps": [
+        {
+          "execArgs": [
+            "esbuild",
+            "--bundle",
+            "src/app/issue/issue-start.lambda.ts",
+            "--target=node24",
+            "--platform=node",
+            "--outfile=assets/app/issue/issue-start.lambda/index.js",
+            "--tsconfig=test/tsconfig.json",
+            "--external:@aws-sdk/*",
+            "--loader:.css=text",
+            "--loader:.mustache=text"
+          ]
+        }
+      ]
+    },
+    "bundle:app/issue/issue-start.lambda:watch": {
+      "name": "bundle:app/issue/issue-start.lambda:watch",
+      "description": "Continuously update the JavaScript bundle from src/app/issue/issue-start.lambda.ts",
+      "steps": [
+        {
+          "execArgs": [
+            "esbuild",
+            "--bundle",
+            "src/app/issue/issue-start.lambda.ts",
+            "--target=node24",
+            "--platform=node",
+            "--outfile=assets/app/issue/issue-start.lambda/index.js",
+            "--tsconfig=test/tsconfig.json",
+            "--external:@aws-sdk/*",
+            "--loader:.css=text",
             "--loader:.mustache=text",
             "--watch"
           ]
