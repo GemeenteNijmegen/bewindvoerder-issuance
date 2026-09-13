@@ -69,7 +69,7 @@ export async function handler(event: APIGatewayProxyEventV2) {
       machtiging_representedFamilyName: client.familyName,
       machtiging_representedInitials: client.initials,
       machtiging_type: client.type,
-      machtiging_scopes: scopes.join(' '),
+      machtiging_scopes: scopes,
       machtiging_representativeKvkNumber: kvkNumber,
       machtiging_representativeName: organisationName,
     };

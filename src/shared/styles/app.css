@@ -10,6 +10,12 @@ body {
   min-height: 100vh;
 }
 
+/* utrecht-button-css does not reset the browser default underline on anchor-styled buttons.
+   Mijn Nijmegen's own app.css documents and applies this same exception. */
+.utrecht-button {
+  text-decoration: none;
+}
+
 .app-body {
   display: flex;
   flex-direction: column;
@@ -86,14 +92,19 @@ body {
   flex-shrink: 0;
 }
 
-.login-hint {
-  margin-block-start: 1rem;
-}
-
-.test-kvk-numbers {
+.test-kvk-details {
   margin-block-start: 2rem;
   font-size: 0.875rem;
   color: #555;
+}
+
+.test-kvk-details summary {
+  cursor: pointer;
+  color: inherit;
+}
+
+.test-kvk-details p {
+  margin-block-start: 0.5rem;
 }
 
 .organisation-card {
