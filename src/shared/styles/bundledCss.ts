@@ -1,4 +1,5 @@
 import designTokens from '@gemeentenijmegen/design-tokens/dist/index.css';
+import fontCss from '@gemeentenijmegen/font/dist/index.css';
 import semanticHtml from '@gemeentenijmegen/semantic-html/dist/index.css';
 import alertCss from '@utrecht/alert-css/dist/index.css';
 import buttonCss from '@utrecht/button-css/dist/index.css';
@@ -13,6 +14,7 @@ import appCss from './app.css';
 
 export const bundledCss = [
   designTokens,
+  fontCss,
   semanticHtml,
   documentCss,
   pageBodyCss,

@@ -86,6 +86,10 @@
       "type": "runtime"
     },
     {
+      "name": "@gemeentenijmegen/font",
+      "type": "runtime"
+    },
+    {
       "name": "@gemeentenijmegen/semantic-html",
       "type": "runtime"
     },

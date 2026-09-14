@@ -58,6 +58,7 @@
     "@gemeentenijmegen/apigateway-http": "^0.0.40",
     "@gemeentenijmegen/aws-constructs": "^0.0.54",
     "@gemeentenijmegen/design-tokens": "^0.1.12",
+    "@gemeentenijmegen/font": "^0.1.12",
     "@gemeentenijmegen/semantic-html": "^0.1.12",
     "@gemeentenijmegen/session": "^0.0.37",
     "@gemeentenijmegen/utils": "^0.0.38",

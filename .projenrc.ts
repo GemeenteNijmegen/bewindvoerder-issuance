@@ -24,6 +24,7 @@ const project = new GemeenteNijmegenCdkApp({
     '@aws-sdk/lib-dynamodb',
     '@gemeentenijmegen/apigateway-http',
     '@gemeentenijmegen/design-tokens',
+    '@gemeentenijmegen/font',
     '@gemeentenijmegen/semantic-html',
     '@gemeentenijmegen/session',
     '@gemeentenijmegen/utils',
