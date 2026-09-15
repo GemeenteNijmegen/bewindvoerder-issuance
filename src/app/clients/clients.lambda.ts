@@ -13,6 +13,19 @@ import { Statics } from '../../Statics';
 const dynamoDBClient = new DynamoDBClient({});
 const logger = new Logger({ serviceName: Statics.projectName });
 
+function formatDateOfBirth(dateOfBirth: string | undefined): string {
+  if (!dateOfBirth) {
+    return '';
+  }
+
+  return new Intl.DateTimeFormat('nl-NL', {
+    day: 'numeric',
+    month: 'numeric',
+    timeZone: 'UTC',
+    year: 'numeric',
+  }).format(new Date(dateOfBirth));
+}
+
 function buildAlert(event: APIGatewayProxyEventV2): { type: string; role: string; message: string } | undefined {
   const issuedClientId = event.queryStringParameters?.issued;
   if (issuedClientId) {
@@ -53,7 +66,7 @@ export async function handler(event: APIGatewayProxyEventV2) {
       alert,
       clients: matchingClients.map((client) => ({
         id: client.id,
-        displayName: `${client.initials} ${client.familyName}(${client.dateOfBirth}) - ${client.bsn}`,
+        displayName: `${client.initials} ${client.familyName}${client.dateOfBirth ? ` (${formatDateOfBirth(client.dateOfBirth)})` : ''} - ${client.bsn}`,
         typeLabel: client.type,
       })),
     });

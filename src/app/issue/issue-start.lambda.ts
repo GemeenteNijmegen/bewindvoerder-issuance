@@ -1,3 +1,4 @@
+import { randomUUID } from 'crypto';
 import { Logger } from '@aws-lambda-powertools/logger';
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
@@ -6,7 +7,6 @@ import { Session } from '@gemeentenijmegen/session';
 import { environmentVariables } from '@gemeentenijmegen/utils';
 import { VeridIssuanceClient } from '@ver-id/node-client';
 import { APIGatewayProxyEventV2 } from 'aws-lambda';
-import { randomUUID } from 'crypto';
 import { findClientById, standardScopes } from '../../shared/fixtures/clients';
 import { logStep } from '../../shared/logStep';
 import { resultPage } from '../../shared/resultPage';
