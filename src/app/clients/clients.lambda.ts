@@ -53,7 +53,7 @@ export async function handler(event: APIGatewayProxyEventV2) {
       alert,
       clients: matchingClients.map((client) => ({
         id: client.id,
-        displayName: `${client.initials} ${client.familyName}`,
+        displayName: `${client.initials} ${client.familyName}(${client.dateOfBirth}) - ${client.bsn}`,
         typeLabel: client.type,
       })),
     });

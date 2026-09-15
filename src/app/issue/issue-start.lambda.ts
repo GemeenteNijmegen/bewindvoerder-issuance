@@ -1,4 +1,3 @@
-import { randomUUID } from 'crypto';
 import { Logger } from '@aws-lambda-powertools/logger';
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
@@ -7,12 +6,13 @@ import { Session } from '@gemeentenijmegen/session';
 import { environmentVariables } from '@gemeentenijmegen/utils';
 import { VeridIssuanceClient } from '@ver-id/node-client';
 import { APIGatewayProxyEventV2 } from 'aws-lambda';
-import { VerIdCache } from './verid/VerIdCache';
-import { getVerIdClientSecret, getVerIdConfig } from './verid/VerIdConfiguration';
+import { randomUUID } from 'crypto';
 import { findClientById, standardScopes } from '../../shared/fixtures/clients';
 import { logStep } from '../../shared/logStep';
 import { resultPage } from '../../shared/resultPage';
 import { Statics } from '../../Statics';
+import { VerIdCache } from './verid/VerIdCache';
+import { getVerIdClientSecret, getVerIdConfig } from './verid/VerIdConfiguration';
 
 const dynamoDBClient = new DynamoDBClient({});
 const documentClient = DynamoDBDocumentClient.from(dynamoDBClient);
@@ -68,6 +68,7 @@ export async function handler(event: APIGatewayProxyEventV2) {
       machtiging_representedBsn: client.bsn,
       machtiging_representedFamilyName: client.familyName,
       machtiging_representedInitials: client.initials,
+      machtiging_representedDateOfBirth: client.dateOfBirth,
       machtiging_type: client.type,
       machtiging_scopes: scopes,
       machtiging_representativeKvkNumber: kvkNumber,
